@@ -33,14 +33,6 @@
           minesAlreadyThere++;
         }
       }
-//      for (var i = 0; i < this._rows.length; i++) {
-//        for (var j = 0; j < this._rows[0].length; j++) {
-//          if (minesAlreadyThere < numOfMines) {
-//            this._rows[i][j] = 1;
-//            minesAlreadyThere++;
-//          }
-//        }
-//      }
     };
     // Service logic
     // ...

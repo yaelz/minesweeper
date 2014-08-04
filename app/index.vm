@@ -79,7 +79,7 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/services/Board.js"></script>
-    <script src="scripts/services/Randomizer.js"></script>
+    <script src="scripts/services/RandomArrayFiller.js"></script>
     <!-- endbuild --><!-- scripts -->
     <!-- end-process-tags -->
 
