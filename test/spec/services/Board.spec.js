@@ -60,4 +60,15 @@ describe('Service: Board', function () {
     expect(minesCounted).toBe(numOfMines);
   });
 
+  it('should create two DIFFERENT boards', function () {
+    var numOfMines = 7;
+    var numOfRows = 5;
+    var numOfColumns = 5;
+    var newB = new Board(numOfRows, numOfColumns, numOfMines);
+    var anotherB = new Board(numOfRows, numOfColumns, numOfMines);
+//    console.log('111111 ' + newB.getRows());
+//    console.log('2222222 ' + anotherB.getRows());
+    expect(newB.getRows()).not.toEqual(anotherB.getRows());
+  });
+
 });

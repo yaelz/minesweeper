@@ -6,6 +6,8 @@
   function BoardFactory() {
     function Board(numOfRows, numOfColumns, numOfMines) {
       var columns;
+      this._numOfCols = numOfColumns;
+      this._numOfRows = numOfRows;
       this._numOfMines = numOfMines;
       this._rows = [];
       for (var row = 0; row < numOfRows; row++) {
@@ -20,14 +22,25 @@
 
     Board.prototype.initBoard = function (numOfMines) {
       var minesAlreadyThere = 0;
-      for (var i = 0; i < this._rows.length; i++) {
-        for (var j = 0; j < this._rows[0].length; j++) {
-          if (minesAlreadyThere < numOfMines) {
-            this._rows[i][j] = 1;
-            minesAlreadyThere++;
-          }
+      var mineIdx, row, col;
+      var placesInBoard = this._numOfRows * this._numOfCols;
+      while (minesAlreadyThere < numOfMines) {
+        mineIdx = Math.floor(Math.random() * placesInBoard);
+        row = Math.floor(mineIdx / this._numOfRows);
+        col = mineIdx % this._numOfCols;
+        if (this._rows[row][col] === 0) {
+          this._rows[row][col] = 1;
+          minesAlreadyThere++;
         }
       }
+//      for (var i = 0; i < this._rows.length; i++) {
+//        for (var j = 0; j < this._rows[0].length; j++) {
+//          if (minesAlreadyThere < numOfMines) {
+//            this._rows[i][j] = 1;
+//            minesAlreadyThere++;
+//          }
+//        }
+//      }
     };
     // Service logic
     // ...
