@@ -6,7 +6,13 @@ describe('Service: Board', function () {
   beforeEach(function () {
     module('minesweeperAppInternal');
 
-    //add your mocks here
+    var fillerMock = function () {
+      return [[1, 0], [0, 0]];
+    };
+
+    module({
+      getRandArray: fillerMock
+    });
   });
 
   // instantiate service
@@ -19,8 +25,6 @@ describe('Service: Board', function () {
     expect(new Board() instanceof Board).toBe(true);
   });
 
-//  it('should create a random board', function () {
-//
-//  });
+//  it('should be [-1,1,1,1]');
 
 });

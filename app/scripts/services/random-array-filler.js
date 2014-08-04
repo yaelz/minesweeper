@@ -30,7 +30,7 @@
         row = Math.floor(mineIdx / numOfCols);
         col = mineIdx % numOfCols;
         if (arr[row][col] === 0) {
-          arr[row][col] = 1;
+          arr[row][col] = 'x';
           minesAlreadyThere++;
         }
       }

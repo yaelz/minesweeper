@@ -41,7 +41,7 @@ describe('Service: randomArrayFiller', function () {
     var numOfMinesInArr = 0;
     for (var row = 0; row < numOfRows; row++) {
       for (var col = 0; col < numOfCols; col++) {
-        if (newB[row][col] === 1) {
+        if (newB[row][col] === 'x') {
           numOfMinesInArr++;
         }
       }
@@ -59,7 +59,7 @@ describe('Service: randomArrayFiller', function () {
       var numOfMinesInArr = 0;
       for (var row = 0; row < numOfRows; row++) {
         for (var col = 0; col < numOfCols; col++) {
-          if (newB[row][col] === 1) {
+          if (newB[row][col] === 'x') {
             numOfMinesInArr++;
           }
         }

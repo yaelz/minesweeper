@@ -5,7 +5,6 @@
   /* @ngInject */
   function BoardFactory(randomArrayFiller) {
     function Board(numOfRows, numOfColumns, numOfMines) {
-      var columns;
       this._numOfMines = numOfMines;
       this._rows = randomArrayFiller.getRandArray(numOfRows, numOfColumns, numOfMines);
     }
