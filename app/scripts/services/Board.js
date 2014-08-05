@@ -19,6 +19,10 @@
       return this._numOfMines;
     };
 
+    Board.prototype.reveal = function () {
+      return 0;
+    };
+
     return Board;
   }
 
