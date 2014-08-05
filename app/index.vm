@@ -80,6 +80,7 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/services/board.js"></script>
     <script src="scripts/services/random-array-filler.js"></script>
+    <script src="scripts/services/rand-number.js"></script>
     <!-- endbuild --><!-- scripts -->
     <!-- end-process-tags -->
 

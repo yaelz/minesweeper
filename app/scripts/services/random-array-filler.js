@@ -3,7 +3,7 @@
 (function () {
 
   /* @ngInject */
-  function RandomArrayFiller() {
+  function RandomArrayFiller(randNumber) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     // Public API here
@@ -23,12 +23,9 @@
       }
 
       var minesAlreadyThere = 0;
-      var mineIdx;
-      var placesInBoard = numOfRows * numOfCols;
       while (minesAlreadyThere < numOfMines) {
-        mineIdx = Math.floor(Math.random() * placesInBoard);
-        row = Math.floor(mineIdx / numOfCols);
-        col = mineIdx % numOfCols;
+        row = randNumber(numOfRows);
+        col = randNumber(numOfCols);
         if (arr[row][col] === 0) {
           arr[row][col] = 'x';
           minesAlreadyThere++;

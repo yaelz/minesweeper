@@ -2,10 +2,19 @@
 
 describe('Service: randomArrayFiller', function () {
   // load the service's module
+  var randMockArr = [];
+
   beforeEach(function () {
     module('minesweeperAppInternal');
+    var randomMockIndex = 0;
+    function randMock() {
+      return randMockArr[randomMockIndex++];
+    }
 
     //add your mocks here
+    module({
+      randNumber: randMock
+    });
   });
 
   // instantiate service
@@ -13,14 +22,6 @@ describe('Service: randomArrayFiller', function () {
   beforeEach(inject(function (_randomArrayFiller_) {
     randomArrayFiller = _randomArrayFiller_;
   }));
-
-  it('should return a random number', function () {
-    // TODO should this be the next test or should it be private and the tests done only on the array?
-    var maxNum = 5;
-    var randomNum = randomArrayFiller.getRandomNum(maxNum);
-    expect(randomNum).toBeGreaterThan(-1);
-    expect(randomNum).not.toBeGreaterThan(4);
-  });
 
   it('should create a new array with 3 rows and columns', function () {
     var numOfRows = 3;
@@ -32,11 +33,18 @@ describe('Service: randomArrayFiller', function () {
     }
   });
 
-  it('should create a new array with 6 mines', function () {
-    // TODO delete this test?
+  it('should place a mine in the center of the board', function () {
+    randMockArr = [1, 1];
+    var grid = randomArrayFiller.getRandArray(3, 3, 1);
+    expect(grid[1][1]).toBe('x');
+  });
+
+  it('should create a new array with one mine', function () {
+    randMockArr = [1, 2];
+
     var numOfRows = 3;
     var numOfCols = 5;
-    var numOfMines = 6;
+    var numOfMines = 1;
     var newB = randomArrayFiller.getRandArray(numOfRows, numOfCols, numOfMines);
     var numOfMinesInArr = 0;
     for (var row = 0; row < numOfRows; row++) {
@@ -46,35 +54,35 @@ describe('Service: randomArrayFiller', function () {
         }
       }
     }
-    expect(numOfMinesInArr).toBe(numOfMines);
-  });
-
-  it('should create a few boards with a few mines', function () {
-    var numOfRows = 3;
-    var numOfCols = 3;
-    var maxNumOfMines = 5;
-    for (var mines = 0; mines < maxNumOfMines; mines++) {
-      var newB = randomArrayFiller.getRandArray(numOfRows, numOfCols, mines);
-
-      var numOfMinesInArr = 0;
-      for (var row = 0; row < numOfRows; row++) {
-        for (var col = 0; col < numOfCols; col++) {
-          if (newB[row][col] === 'x') {
-            numOfMinesInArr++;
-          }
-        }
-      }
-      expect(numOfMinesInArr).toBe(mines);
-    }
+    expect(numOfMinesInArr).toBe(1);
   });
 
   it('should create two DIFFERENT boards', function () {
-    var numOfMines = 7;
+    randMockArr = [1, 2, 2, 1];
+    var numOfMines = 1;
     var numOfRows = 5;
     var numOfColumns = 5;
     var newArr = randomArrayFiller.getRandArray(numOfRows, numOfColumns, numOfMines);
     var anotherArr = randomArrayFiller.getRandArray(numOfRows, numOfColumns, numOfMines);
     expect(newArr).not.toEqual(anotherArr);
+  });
+
+  it('should create a board with two DIFFERENT mines', function () {
+    randMockArr = [2, 2, 2, 2, 3, 1];
+    var numOfMines = 2;
+    var numOfRows = 5;
+    var numOfCols = 5;
+    var newArr = randomArrayFiller.getRandArray(numOfRows, numOfCols, numOfMines);
+//    var anotherArr = randomArrayFiller.getRandArray(numOfRows, numOfColumns, numOfMines);
+    var numOfMinesInArr = 0;
+    for (var row = 0; row < numOfRows; row++) {
+      for (var col = 0; col < numOfCols; col++) {
+        if (newArr[row][col] === 'x') {
+          numOfMinesInArr++;
+        }
+      }
+    }
+    expect(numOfMinesInArr).toEqual(numOfMines);
   });
 
 });
