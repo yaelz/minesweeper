@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Service: Board', function () {
+xdescribe('Service: Board', function () {
 
   // load the service's module
   beforeEach(function () {
@@ -53,16 +53,23 @@ describe('Service: Board', function () {
     it('should make the empty cells stay empty', function () {
       var newB = new Board(6, 5, 3);
       expect(newB.reveal(0, 0)).toBe(0);
-      //console.log(newB.getRows());
     });
 
-    it('should put number of mines around the revealed cell', function () {
+    it('should put number of mines around the mine cells', function () {
       var newB = new Board(6, 5, 3);
+      expect(newB.reveal(1, 4)).toBe('x');
       expect(newB.reveal(0, 4)).toBe(1);
-      console.log(newB.getRows());
+      expect(newB.reveal(0, 3)).toBe(1);
+      expect(newB.reveal(1, 3)).toBe(1);
+      expect(newB.reveal(2, 3)).toBe(1);
+      expect(newB.reveal(2, 4)).toBe(1);
+
       expect(newB.reveal(1, 4)).toBe('x');
       expect(newB.reveal(4, 1)).toBe(2);
+      expect(newB.reveal(5, 1)).toBe(2);
+      expect(newB.reveal(3, 1)).toBe(2);
     });
 
+//    it('should reveal ');
   });
 });

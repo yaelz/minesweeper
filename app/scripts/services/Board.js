@@ -5,20 +5,11 @@
   /* @ngInject */
   function BoardFactory(randomArrayFiller) {
     function Board(numOfRows, numOfColumns, numOfMines) {
-      this._numOfMines = numOfMines;
       this._grid = randomArrayFiller.getRandArray(numOfRows, numOfColumns, numOfMines);
       this.fillBoard();
     }
     // Service logic
     // ...
-
-    Board.prototype.getRows = function () {
-      return this._grid;
-    };
-
-    Board.prototype.numOfMines = function () {
-      return this._numOfMines;
-    };
 
     Board.prototype.reveal = function (col, row) {
 //      console.log(this._grid);
@@ -39,15 +30,27 @@
           }
           if (row !== 0) {
             this._grid[row - 1][col]++;
+            if (col !== 0) {
+              this._grid[row - 1][col - 1]++;
+            }
           }
-          if (col) {
+          if (col !== 0) {
             this._grid[row][col - 1]++;
+            if (row !== numOfRows - 1) {
+              this._grid[row + 1][col - 1]++;
+            }
           }
           if (row !== numOfRows - 1) {
             this._grid[row + 1][col]++;
+            if (col !== numOfCols - 1) {
+              this._grid[row + 1][col + 1]++;
+            }
           }
           if (col !== numOfCols - 1) {
             this._grid[row][col + 1]++;
+            if (row !== 0) {
+              this._grid[row - 1][col + 1]++;
+            }
           }
         }
       }

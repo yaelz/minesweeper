@@ -22,6 +22,7 @@
         arr.push(rows);
       }
 
+      //TODO object that holds mines in col and row {col: colOfMine, row: rowOfMine} and then go over the array one time
       var minesAlreadyThere = 0;
       while (minesAlreadyThere < numOfMines) {
         row = randNumber(numOfRows);
