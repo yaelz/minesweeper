@@ -13,8 +13,8 @@
     // Service logic
     // ...
 
-    Board.prototype.getCell = function (col, row) {
-      return this._grid[col][row];
+    Board.prototype.getCell = function (row, col) {
+      return this._grid[row][col];
     };
 
     Board.prototype.fillBoard = function () {
@@ -58,16 +58,18 @@
       }
     };
 
-    Board.prototype.getBoard = function () {
-      return this._grid;
-    };
-
     Board.prototype.reveal = function (row, col) {
       var cell = this._grid[row][col];
+      if (cell.isRevealed()) {
+        return 0;
+      }
       var numOfRevealed = 0;
       cell.reveal();
       numOfRevealed++;
-      if (cell.isMine() || (cell.numOfMineNeighbors() !== 0 && cell.numOfMineNeighbors() !== undefined)) {
+      if (cell.isMine()) {
+        return -1;
+      }
+      if ((cell.numOfMineNeighbors() !== 0 && cell.numOfMineNeighbors() !== undefined)) {
         return 1;
       }
       //console.log('row: ' + row + ' col: ' + col);
