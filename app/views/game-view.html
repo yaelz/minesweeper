@@ -1,0 +1,6 @@
+<div ng-controller="GameController as gameCtrl" class = "game-container center">
+    <button ng-click="gameCtrl.startGame()" id="start-button">Start the coolest game</button>
+    <div ng-repeat="row in gameCtrl.game._grid">
+        <button ng-repeat="cell in row" class="cell-button">{{cell._mineNeighbors}}</button>
+    </div>
+</div>

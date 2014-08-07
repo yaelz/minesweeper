@@ -4,10 +4,12 @@
 
   /* @ngInject */
   function cellFactory() {
-    function Cell(isMine) {
-      this._isMine = isMine || false;
+    function Cell() {
+      // TODO should inner functions also be with this underscore ?
+      this._isMine = false;
       this._mineNeighbors = 0;
       this._isFlagged = false;
+      this._isRevealed = false;
     }
 
     // Service logic
@@ -16,6 +18,14 @@
     // Public API here
     Cell.prototype.isMine = function () {
       return this._isMine;
+    };
+
+    Cell.prototype.setMine = function () {
+      this._isMine = true;
+    };
+
+    Cell.prototype.isEmpty = function () {
+      return (!this._isMine) && (this._mineNeighbors === 0);
     };
 
     Cell.prototype.addMineNeighbor = function () {
@@ -32,6 +42,14 @@
 
     Cell.prototype.toggleFlag = function () {
       this._isFlagged = !this._isFlagged;
+    };
+
+    Cell.prototype.reveal = function () {
+      this._isRevealed = true;
+    };
+
+    Cell.prototype.isRevealed = function () {
+      return this._isRevealed;
     };
 
     return Cell;

@@ -3,26 +3,26 @@ $font-helvetica55: "HelveticaNeueW01-55Roma", "HelveticaNeueW02-55Roma", "Helvet
 $font-helvetica65: "HelveticaNeueW01-65Medi", "HelveticaNeueW02-65Medi", "HelveticaNeueW10-65Medi", sans-serif;
 $font-helvetica75: "HelveticaNeueW01-75Bold", "HelveticaNeueW02-75Bold", "HelveticaNeueW10-75Bold", sans-serif;
 
-.container {
+.game-container {
   margin: auto;
-  width: 300px;
+//  width: 300px;
+//  background-image:url('http://www.maslona.com/logos/minesweeper_logo2.gif');
+  margin-bottom: 5px;
 }
 
-.hero-unit {
-  position: absolute;
-  width: 300px;
-  font-family: $font-helvetica55;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
+.format-header {
+  margin: auto;
+  width: auto;
+  padding: 50px;
+  background-color: red;
 }
 
-.hero-unit h1 {
-  font-family: $font-helvetica75;
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
+.center {
+  margin: auto;
+  text-align:center;
+}
+
+.top {
+  text-align: top;
+  background-color: blue;
 }

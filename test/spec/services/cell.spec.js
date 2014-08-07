@@ -19,8 +19,14 @@ describe('Service: cell', function () {
     expect(new Cell()).toBeDefined();
   });
 
-  it('should create a new mine cell', function () {
-    var cell = new Cell(true);
+  it('should create a new cell empty', function () {
+    var cell = new Cell();
+    expect(cell.isEmpty()).toBeTruthy();
+  });
+
+  it('should create a new mine cell when given true in the constructor', function () {
+    var cell = new Cell();
+    cell.setMine();
     expect(cell.isMine()).toBeTruthy();
   });
 
@@ -38,6 +44,13 @@ describe('Service: cell', function () {
     expect(cell.isFlagged()).toBe(false);
     cell.toggleFlag();
     expect(cell.isFlagged()).toBe(true);
+  });
+
+  it('should create a non-revealed cell', function () {
+    var cell = new Cell();
+    expect(cell.isRevealed()).toBe(false);
+    cell.reveal();
+    expect(cell.isRevealed()).toBe(true);
   });
 
 });

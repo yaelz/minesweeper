@@ -3,7 +3,7 @@
 (function () {
 
   /* @ngInject */
-  function RandomArrayFiller(randNumber) {
+  function RandomArrayFiller(randNumber, Cell) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     // Public API here
@@ -11,24 +11,28 @@
       return Math.floor(Math.random() * maxNum);
     };
 
-    this.getRandArray = function (numOfRows, numOfCols, numOfMines) {
-      var arr = [];
+    this.init = function (numOfRows, numOfCols) {
       var rows, row, col;
+      var arr = [];
       for (row = 0; row < numOfRows; row++) {
         rows = [];
         for (col = 0; col < numOfCols; col++) {
-          rows.push(0);
+          rows.push(new Cell());
         }
         arr.push(rows);
       }
+      return arr;
+    };
 
-      //TODO object that holds mines in col and row {col: colOfMine, row: rowOfMine} and then go over the array one time
+    this.getRandArray = function (numOfRows, numOfCols, numOfMines) {
+      var arr = this.init(numOfRows, numOfCols);
+      var row, col;
       var minesAlreadyThere = 0;
       while (minesAlreadyThere < numOfMines) {
         row = randNumber(numOfRows);
         col = randNumber(numOfCols);
-        if (arr[row][col] === 0) {
-          arr[row][col] = 'x';
+        if (!arr[row][col].isMine()) {
+          arr[row][col].setMine();
           minesAlreadyThere++;
         }
       }
