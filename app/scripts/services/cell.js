@@ -45,7 +45,9 @@
     };
 
     Cell.prototype.reveal = function () {
-      this._isRevealed = true;
+      if (!this.isFlagged()) {
+        this._isRevealed = true;
+      }
     };
 
     Cell.prototype.isRevealed = function () {

@@ -8,6 +8,7 @@
       this._numOfRows = numOfRows;
       this._numOfColumns = numOfColumns;
       this._grid = randomArrayFiller.getRandArray(numOfRows, numOfColumns, numOfMines);
+      this._gameOver = false;
       this.fillBoard();
     }
     // Service logic
@@ -59,6 +60,9 @@
     };
 
     Board.prototype.reveal = function (row, col) {
+      if (this._gameOver) {
+        return 0;
+      }
       var cell = this._grid[row][col];
       if (cell.isRevealed()) {
         return 0;
@@ -67,6 +71,7 @@
       cell.reveal();
       numOfRevealed++;
       if (cell.isMine()) {
+        this._gameOver = true;
         return -1;
       }
       if ((cell.numOfMineNeighbors() !== 0 && cell.numOfMineNeighbors() !== undefined)) {
@@ -87,6 +92,10 @@
         }
       }
       return numOfRevealed;
+    };
+
+    Board.prototype.gameOver = function () {
+      return this._gameOver;
     };
 
     return Board;

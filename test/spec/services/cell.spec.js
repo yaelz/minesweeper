@@ -53,4 +53,14 @@ describe('Service: cell', function () {
     expect(cell.isRevealed()).toBe(true);
   });
 
+  it('should do nothing when is flagged', function () {
+    var cell = new Cell();
+    cell.toggleFlag();
+    cell.reveal();
+    expect(cell.isRevealed()).toBe(false);
+    cell.toggleFlag();
+    cell.reveal();
+    expect(cell.isRevealed()).toBe(true);
+  });
+
 });

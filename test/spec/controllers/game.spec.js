@@ -19,7 +19,23 @@ describe('Controller: GameController', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the controller', function () {
-//    expect(GameController.awesomeThings.length).toBe(6);
+  it('should initialize a board', inject(function (Board) {
+    // TODO board should be mock...
+    var gameCtrl = GameController;
+    expect(gameCtrl.game).not.toBeDefined();
+  }));
+
+  it('should create a board when starting a game"', function () {
+    var gameCtrl = GameController;
+    gameCtrl.startGame();
+    expect(gameCtrl.game.constructor.name).toBe('Board');
+  });
+
+  it('should hold status "Playing" when playing a game and "Done" when ending game', function () {
+    var gameCtrl = GameController;
+    gameCtrl.startGame();
+    expect(gameCtrl.state).toEqual('Playing');
+    gameCtrl.endGame();
+    expect(gameCtrl.state).toEqual('Done');
   });
 });

@@ -118,16 +118,16 @@ describe('Service: Board', function () {
       var minesArr = [[1, 1], [2, 2]];
       setBoardArray(rows, cols, minesArr);
       var board = new Board(rows, cols, minesArr);
-      expect(board.reveal(1, 1)).toBe(-1);
       expect(board.reveal(0, 1)).toBe(1);
 
       for (var row = 0; row < rows; row++) {
         for (var col = 0; col < cols; col++) {
-          if ((row !== 1 || col !== 1) && (row !== 0 || col !== 1)) {
+          if ((row !== 0 || col !== 1)) {
             expect(board.getCell(row, col).reveal.callCount).toBe(0);
           }
         }
       }
+      expect(board.reveal(1, 1)).toBe(-1);
 
     });
     it('should reveal more than one cell when revealing an empty cell', function () {
@@ -158,6 +158,27 @@ describe('Service: Board', function () {
       board = new Board(rows, cols, minesArr);
       expect(board.reveal(1, 2)).toBe(1);
       expect(board.reveal(0, 4)).toBe(13);
+    });
+    it('should have state game over when finding a mine', function () {
+      var rows = 3;
+      var cols = 5;
+      var minesArr = [[1, 1], [2, 2]];
+      setBoardArray(rows, cols, minesArr);
+      var board = new Board(rows, cols, minesArr);
+      expect(board.gameOver()).toBe(false);
+      board.reveal(1, 1);
+      expect(board.gameOver()).toBe(true);
+    });
+    it('should not reveal any more cells when game is over', function () {
+      var rows = 3;
+      var cols = 5;
+      var minesArr = [[1, 1], [2, 2]];
+      setBoardArray(rows, cols, minesArr);
+      var board = new Board(rows, cols, minesArr);
+      board.reveal(1, 1);
+      console.log(board._gameOver);
+      var numOfRevealedAfterGameOver = board.reveal(0, 1);
+      expect(numOfRevealedAfterGameOver).toBe(0);
     });
   });
 });

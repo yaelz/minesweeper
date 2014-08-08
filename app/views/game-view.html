@@ -1,6 +1,16 @@
 <div ng-controller="GameController as gameCtrl" class = "game-container center">
-    <button ng-click="gameCtrl.startGame()" id="start-button">Start the coolest game</button>
+    <button ng-click="gameCtrl.startGame()" id="start-button"
+            ng-hide="gameCtrl.state === 'Playing'">Start the coolest game
+    </button>
     <div ng-repeat="row in gameCtrl.game._grid">
-        <button ng-repeat="cell in row" class="cell-button">{{cell._mineNeighbors}}</button>
+        <button ng-repeat="cell in row" class="cell-button" ng-class="{ flagged: cell.isFlagged(), mine: cell.isMine() && cell.isRevealed()}"
+                ng-click="gameCtrl.game.reveal($parent.$index, $index)"
+                >
+            <div ng-class="{ revealed: cell.isRevealed(), transparent: (!cell.isRevealed() || cell.isMine())}">
+                {{cell._mineNeighbors}}
+            </div>
+        </button>
     </div>
+    <span ng-class="{box: gameCtrl.game.gameOver(), popUpControl: gameCtrl.game.gameOver()}">
+    </span>
 </div>
