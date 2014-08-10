@@ -3,11 +3,43 @@ $font-helvetica55: "HelveticaNeueW01-55Roma", "HelveticaNeueW02-55Roma", "Helvet
 $font-helvetica65: "HelveticaNeueW01-65Medi", "HelveticaNeueW02-65Medi", "HelveticaNeueW10-65Medi", sans-serif;
 $font-helvetica75: "HelveticaNeueW01-75Bold", "HelveticaNeueW02-75Bold", "HelveticaNeueW10-75Bold", sans-serif;
 
+html{
+  //background:url('http://www.maslona.com/logos/minesweeper_logo2.gif') no-repeat;
+  //  background-color: rgba(00,80,66,0.4);
+  background: rgb(73, 73, 73);
+  background-size: 100%;
+}
+
 .game-container {
   margin: auto;
-//  width: 300px;
-//
   margin-bottom: 5px;
+}
+
+.form {
+  font: $font-helvetica45;
+  color: rgb(107, 171, 255);
+  line-height: 1.5em;
+  background-color: #000000;
+  padding: 5px;
+  border: 2px solid;
+  border-radius: 25px;
+}
+
+.form-names {
+  float: left;
+}
+.form-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+.align-cols {
+//  margin-left: 50px ;
+}
+
+.align-mines {
+//  margin-left: 50px ;
 }
 
 .format-header {
@@ -15,15 +47,20 @@ $font-helvetica75: "HelveticaNeueW01-75Bold", "HelveticaNeueW02-75Bold", "Helvet
   width: auto;
   height: auto;
   padding: 50px;
-
 }
 
-html{
-  background:url('http://www.maslona.com/logos/minesweeper_logo2.gif') no-repeat;
-//  background-color: rgba(00,80,66,0.4);
-//  background: rgba(255,0,0,0.1);
-  background-size: 100%;
+#start-button {
+//  background-image:url(http://watermarked.cutcaster.com/cutcaster-photo-100284375-pink-pixels.jpg);
+  color: rgb(107, 171, 255);
+  background-color: #000000;
+  width: 300px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 900;
+  border: 0.5px solid;
+  border-radius: 10px;
 }
+
 .center {
   margin: auto;
   text-align:center;
@@ -36,20 +73,18 @@ html{
 //  background-color: blue;
 }
 
-//.mouseOver {
-//  width: 300px;
-//  height: 300px;
-//  top: -40px;
-//  z-index: 1;
-//  position: absolute;
-//  box-shadow: 2px -2px 10px 3px #888, inset 2px -2px 10px 3px #888;
-//}
-
 .cell-button {
   width: 50px;
   height: 50px;
   margin: 2px;
+  border: 1px;
+  border-radius: 10px;
+  background-color: rgb(107, 171, 255);
 //  background-color: #ff3333;
+}
+
+.cell-button:hover {
+  background: #5a96c8;
 }
 
 .transparent {
@@ -57,37 +92,53 @@ html{
 }
 
 .revealed {
-  color: 0;
+  font-size: 17px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.revealed0 {
+  color: #ffffff;
+}
+
+.revealed1 {
+  color: #61cdff;
+}
+
+.revealed2 {
+  color: #008800;
+}
+
+.revealed3 {
+  color: yellow;
+}
+
+.revealed3 {
+  color: #882535;
+}
+//TODO what about the naming when using ng-class???
+.buttonrevealed {
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .mine {
-  background-image:url('http://b-i.forbesimg.com/jamesconca/files/2013/03/Atomic-Bomb.jpg');
+//  background-image:url('http://b-i.forbesimg.com/jamesconca/files/2013/03/Atomic-Bomb.jpg');
+  background-image:url(https://lh4.ggpht.com/Or8a4NgzulyyTx7gHL3kM2eMpf_GBbHVmBMVRIVrVTAH0913u_QJY-H736yJUM6YFaZL=w300);
   background-size: 100%;
-//  width: 50px;
-//  height: 50px;
+  color: transparent;
 }
 
 .flagged {
   background:url('http://www.beforethecross.com/wp-content/uploads/2012/08/wavewhiteflag.jpg') no-repeat;
   background-size: 100%;
+  margin: auto;
+  color: transparent;
 }
 
 .gameover {
   background-image: url(http://24.media.tumblr.com/tumblr_m4ufmqLqEQ1qfg9j4o1_500.gif);
   display: 'block';
   position: absolute;
-}
-
-.black_overlay{
-  display: none;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  z-index:1001;
-  -moz-opacity: 0.8;
-  opacity:.80;
-//  filter: alpha(opacity=80);
 }

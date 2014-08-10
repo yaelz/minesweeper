@@ -24,7 +24,7 @@ describe('Service: cell', function () {
     expect(cell.isEmpty()).toBeTruthy();
   });
 
-  it('should create a new mine cell when given true in the constructor', function () {
+  it('should make the cell a mine when using "set mine" on it', function () {
     var cell = new Cell();
     cell.setMine();
     expect(cell.isMine()).toBeTruthy();

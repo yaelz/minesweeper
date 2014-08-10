@@ -19,18 +19,15 @@ describe('Controller: GameController', function () {
     });
   }));
 
-  it('should initialize a board', inject(function (Board) {
-    // TODO board should be mock...
+  it('should initialize a board', function () {
     var gameCtrl = GameController;
     expect(gameCtrl.game).not.toBeDefined();
-  }));
-
+  });
   it('should create a board when starting a game"', function () {
     var gameCtrl = GameController;
     gameCtrl.startGame();
     expect(gameCtrl.game.constructor.name).toBe('Board');
   });
-
   it('should hold status "Playing" when playing a game and "Done" when ending game', function () {
     var gameCtrl = GameController;
     gameCtrl.startGame();

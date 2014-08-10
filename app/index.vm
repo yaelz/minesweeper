@@ -82,6 +82,8 @@
     <script src="scripts/services/rand-number.js"></script>
     <script src="scripts/services/cell.js"></script>
     <script src="scripts/controllers/game.js"></script>
+    <script src="scripts/controllers/submit-game.js"></script>
+    <script src="scripts/directives/right-click-flag.js"></script>
     <!-- endbuild --><!-- scripts -->
     <!-- end-process-tags -->
 

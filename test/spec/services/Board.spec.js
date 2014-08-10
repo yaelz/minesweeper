@@ -100,6 +100,14 @@ describe('Service: Board', function () {
       expect(mockBoardArray[4][1].addMineNeighbor.callCount).toBe(2);
       expect(mockBoardArray[5][1].addMineNeighbor.callCount).toBe(2);
     });
+    it('should not put the number of mine cells around it for a mine', function () {
+      var rows = 6;
+      var cols = 5;
+      var minesArr = [[1, 1]];
+      setBoardArray(rows, cols, minesArr);
+      var board = new Board();
+      expect(mockBoardArray[1][1].addMineNeighbor.callCount).toBe(0);
+    });
   });
 
   describe('Revealing', function () {
